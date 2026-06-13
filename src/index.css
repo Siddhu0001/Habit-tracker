@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #f4f1ea;
+  --card-bg: #ffffff;
+  --text: #2b2b2b;
+  --text-light: #777;
+  --border: #ddd;
+  --accent: #e07a5f;
+  --accent-light: #fdf0e6;
+  --success: #6a994e;
+  --shadow: rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] {
+  --bg: #1a1a1a;
+  --card-bg: #2a2a2a;
+  --text: #f0f0f0;
+  --text-light: #999;
+  --border: #444;
+  --accent: #e07a5f;
+  --accent-light: #3a2a25;
+  --success: #6a994e;
+  --shadow: rgba(0,0,0,0.3);
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-light);
+  margin-top: 0.3rem;
+}
+
+.progress-chart {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.progress-bar-bg {
+  background: var(--border);
+  border-radius: 8px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(90deg, #e07a5f, #f2a154);
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+.add-habit-form {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.form-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.add-habit-form input,
+.add-habit-form select {
+  flex: 1;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.add-habit-form button {
+  background: #2b2b2b;
+  color: #fff;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .add-habit-form button {
+  background: var(--accent);
+}
+
+.add-habit-form button:hover {
+  opacity: 0.85;
+}
+
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.habit-card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-shadow: 0 2px 8px var(--shadow);
+  transition: background 0.2s;
+  gap: 1rem;
+}
+
+.habit-card.done {
+  background: var(--accent-light);
+}
+
+.habit-info {
+  flex: 1;
+}
+
+.habit-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.habit-title-row h3 {
+  font-size: 1.1rem;
+}
+
+.category-tag {
+  font-size: 0.7rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 0.15rem 0.6rem;
+  color: var(--text-light);
+}
+
+.habit-notes {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.3rem;
+}
+
+.streak {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 0.3rem;
+}
+
+.heatmap {
+  display: flex;
+  gap: 4px;
+  margin-top: 0.5rem;
+}
+
+.heatmap-cell {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  background: var(--border);
+}
+
+.heatmap-cell.filled {
+  background: var(--accent);
+}
+
+.habit-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.toggle-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.habit-card.done .toggle-btn {
+  background: var(--success);
+}
+
+.edit-btn,
+.delete-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  width: 36px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--text-light);
+}
+
+.delete-btn:hover {
+  background: #fdd;
+  color: #c33;
+}
+
+.edit-btn:hover {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.editing .edit-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.editing input,
+.editing select {
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--text-light);
+  padding: 2rem 0;
+}
+
+@media (max-width: 480px) {
+  .habit-card {
+    flex-direction: column;
+  }
+  .habit-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
